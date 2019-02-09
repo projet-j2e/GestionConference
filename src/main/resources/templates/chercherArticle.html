@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}"></link>
+ <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+</head>
+
+<header>
+<div class="navbar navbar-default">
+<div class="container">
+   <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{chercherArticle}">Chercher Article</a>
+                </div>
+
+     <ul class="nav navbar-nav">
+     <li><a th:href="@{Addarticle}">Ajouter Article</a></li>
+      <li><a th:href="@{viewArticlelist}">Chercher Article</a></li>
+
+     </ul>
+</div>
+</div>
+
+</header>
+
+
+<body>
+
+ <form th:action="@{/chercherArticle}" method="get">
+ 
+ <div class="container">
+   <table class="table table-bordered">
+   <thead>
+                    <tr class="bg-success">
+                        <th><div class="row">
+                           <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+ 
+ <label>Entrer le code d'article</label>
+ <input type="text" name="idArticle" placeholder=""/></div></div>
+  <div class="col-xs-6 col-sm-6 col-md-6">
+                           
+ <button type="submit">Chercher</button>
+ </div>
+ </div>
+</th></tr></thead></table></div>
+ 
+ </form>
+  <div class="container">
+   <table class="table table-bordered">
+  <thead>
+ <tr class="bg-info">
+ <th>ID article</th><th>note du chair</th> <th>Designation</th><th>Statut</th> <th>Titre</th><th>Date du creation</th><th>Payee</th><th>Action</th>
+ </tr> </thead>
+ 
+
+
+
+ <tr th:if="${article}" >
+ <td th:text="${article.idArticle}"></td ><td th:text="${article.notechair}">note chair</td> <td th:text="${article.resume}">resume</td><td th:text="${article.statut}">statut</td> <td th:text="${article.titre}">titre</td><td th:text="${article.datecreation}">date creation</td> <td th:text="${article.paye}"></td>
+
+<td><a class='btn btn-info btn-block'  style="background-color:#DC143C"  th:href="@{deletearticle(idArticle=${article.idArticle})}"  onclick="return confirm('Are you sure you want to delete this item?');">Supprimer</a>
+<a  class="btn btn-info btn-block" th:href="@{editArticle(idArticle=${article.idArticle})}">modifier</a></td>
+
+
+ </tr>
+ 
+ 
+ </table>  </div>
+</body>
+</html>

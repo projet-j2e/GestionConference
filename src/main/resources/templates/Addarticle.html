@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}"></link>
+ <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<style>
+.center {
+  display: block;
+  margin-left: 20%;
+  margin-right: 40%;
+  width: 100%;
+
+ 
+}
+.button {
+    position: absolute;
+    top: 86%;
+      margin-left: 29%;
+      background-color:#357AB7;
+      color:white;
+     
+        border: none;padding: 15px 32px; text-align: center;
+        display: inline-block;
+         font-size: 13px;
+}
+</style>
+</head>
+
+<header>
+<div class="navbar navbar-default">
+<div class="container">
+   <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{Addarticle}">Ajouter Article</a>
+                </div>
+
+     <ul class="nav navbar-nav">
+     <li><a th:href="@{viewArticlelist}">Articles</a></li>
+      <li><a th:href="@{chercherArticle}">Chercher Article</a></li>
+
+     </ul>
+</div>
+</div>
+
+</header>
+<body >
+
+<div layout:fragment="content"  class="center">
+ <div class="col-md-6">
+   <div class="panel panel-primary">
+   <div class="panel-heading" style="text-align:center">Ajouter Article</div>
+   <div class="panel-body">
+   
+<form  th:action="@{/save}" th:object="${article}" method="post">
+<table class="form-group">
+<tr><td  >titre </td> <td> <input class="form-control" id="usr" type="text" th:field="*{titre}"/></td> </tr> 
+<tr><td><label></label></td></tr>
+
+<tr><td>resume </td>
+ <td> 
+ <textarea  class="form-control" id="usr" rows="5" cols="60" th:field="*{resume}" placeholder="Ecrire une Designation "></textarea>
+ </td>       </tr>
+
+<tr><td><label></label></td></tr>
+<tr><td>notechair </td> <td> <input class="form-control"  placeholder="0 " type="text" th:field="*{Notechair}"/></td>       </tr>
+<tr><tr><td><label></label></td></tr>
+<td>dateCreation </td> <td> <input  class="form-control" type="date" th:field="*{datecreation}"/></td>       </tr>
+<!--  <tr><td>payee </td> <td> <input type="text" th:field="*{paye}"/></td>       </tr>-->
+<tr><td><label></label></td></tr>
+<tr><td>payee </td> <td>
+<select   class="form-control"  th:field="*{paye}">
+  <option th:value="'false'" th:selected="False">False</option>
+  <option th:value="'true'" th:text="True">True</option>
+
+</select>
+</td></tr>
+<tr><td><label></label></td></tr>
+<tr>
+
+<td>Statut </td> <td>
+<select  class="form-control"  th:field="*{statut}">
+  <option th:value="'Refuse'" th:selected="Refuse">Refuse</option>
+  <option th:value="'Accepte'" th:text="Accepte">Accepte</option>
+ 
+</select>
+</td></tr>
+<tr><td><label></label></td></tr>
+<tr><td></td><td><input  type="submit" value="Ajouter" class="button"/> </td></tr>
+</table>
+
+
+
+
+</form>
+   
+   </div>
+   
+   </div>
+   
+   </div>
+ </div>
+
+
+
+
+</body>
+</html>

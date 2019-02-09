@@ -1,8 +1,10 @@
 package com.mql.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 @Entity
@@ -18,15 +21,18 @@ public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	  private Long IdArticle ; 
-    //@NotEmpty
+    @NotEmpty
 	  private String Titre;
-  //  @NotEmpty
+      @NotEmpty
+   @Size(min=4,max=100)
 	  private String Resume;
   //  @NotEmpty
+  // @Column(columnDefinition = "varchar(20) default 'refusé'")
 	  private String Statut;
-    private Date datecreation;
-   // @NotEmpty
-	  private Long Notechair;
+   @Column(name = "datecreation", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private String datecreation=new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+    //@Column(name="Notechair",columnDefinition="Long default 0")
+	  private Long Notechair=0L;
    // @NotEmpty
     private Boolean paye ;
   
@@ -41,7 +47,7 @@ public class Article implements Serializable {
 		}
 
 
-	public Article( String titre, String resume, String statut, Date datecreation, Long notechair,
+	public Article( String titre, String resume, String statut, String datecreation, Long notechair,
 			Boolean paye, Author author) {
 		super();
 	
@@ -96,12 +102,12 @@ public class Article implements Serializable {
 	}
 
 
-	public Date getDatecreation() {
+	public String getDatecreation() {
 		return datecreation;
 	}
 
 
-	public void setDatecreation(Date datecreation) {
+	public void setDatecreation(String datecreation) {
 		this.datecreation = datecreation;
 	}
 
