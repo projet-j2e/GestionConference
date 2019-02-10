@@ -20,6 +20,11 @@ public class Author implements Serializable{
 	private String nom;
 	@OneToMany(mappedBy="author",fetch=FetchType.LAZY)
 	private 	Collection <Article>  articles;
+	
+
+	
+	
+	
 	public Author() {
 		super();
 		// TODO Auto-generated constructor stub
