@@ -25,6 +25,7 @@
         display: inline-block;
          font-size: 13px;
 }
+
 </style>
 </head>
 
@@ -63,14 +64,14 @@
  </td>       </tr>
 
 <tr><td><label></label></td></tr>
-<tr><td>notechair </td> <td> <input class="form-control"  placeholder="0 " type="text" th:field="*{Notechair}"/></td>       </tr>
+<tr><td>notechair </td> <td> <input class="form-control" readonly="readonly"   placeholder="0 " type="text" th:field="*{Notechair}"/></td>       </tr>
 <tr><tr><td><label></label></td></tr>
 <td>dateCreation </td> <td> <input  class="form-control" type="date" th:field="*{datecreation}"/></td>       </tr>
 <!--  <tr><td>payee </td> <td> <input type="text" th:field="*{paye}"/></td>       </tr>-->
 <tr><td><label></label></td></tr>
 <tr><td>payee </td> <td>
-<select   class="form-control"  th:field="*{paye}">
-  <option th:value="'false'" th:selected="False">False</option>
+<select  disabled="disabled"  class="form-control"  th:field="*{paye}"  >
+  <option th:value="'false'"  th:selected="False">False</option>
   <option th:value="'true'" th:text="True">True</option>
 
 </select>
@@ -79,7 +80,7 @@
 <tr>
 
 <td>Statut </td> <td>
-<select  class="form-control"  th:field="*{statut}">
+<select  disabled="disabled" class="form-control"  th:field="*{statut}">
   <option th:value="'Refuse'" th:selected="Refuse">Refuse</option>
   <option th:value="'Accepte'" th:text="Accepte">Accepte</option>
  
