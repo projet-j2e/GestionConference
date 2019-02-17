@@ -48,6 +48,23 @@ public class Reviewer_Article {
 	public void setReview(int review) {
 		this.review = review;
 	}
+
+	public Long getArticle_id_article() {
+		return article_id_article;
+	}
+
+	public void setArticle_id_article(Long article_id_article) {
+		this.article_id_article = article_id_article;
+	}
+
+	public Long getReviewer_id() {
+		return reviewer_id;
+	}
+
+	public void setReviewer_id(Long reviewer_id) {
+		this.reviewer_id = reviewer_id;
+	}
+	
 	
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.mql.Service.UserService;
@@ -46,16 +47,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String login(@Valid Author author) {
+	public RedirectView login(@Valid Author author,RedirectAttributes attributes) {
+		
 		Reviewer r = reviewRepository.findRByNomAndPassword(author.getNom(),  author.getPassword()); 
 		Author a= authorRepository.findAuthorByNomAndPassword(author.getNom(), author.getPassword());
 		if(a != null) {
-		return "redirect:/viewArticlelist";
+			attributes.addAttribute("id",a.getIdAuthor());
+		return  new RedirectView("/viewArticlelist");
 		}
 		else if(r !=null) {
-			return "redirect:/getreview";
+			attributes.addAttribute("id",r.getId());
+			return  new RedirectView("/getreview");
 		}
-		return "redirect:/login";
+		return  new RedirectView("/login");
 	}
 	
 	@RequestMapping("/login")
