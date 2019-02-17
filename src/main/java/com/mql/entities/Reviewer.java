@@ -22,6 +22,25 @@ public class Reviewer {
 	@OneToMany(fetch=FetchType.LAZY)
 	private Collection<Article> article;
 	
+	private String role="R";
+	private String password;
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Reviewer() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -55,6 +74,14 @@ public class Reviewer {
 
 	public void setArticle(Collection<Article> article) {
 		this.article = article;
+	}
+
+	public Reviewer(String name, Collection<Article> article, String role, String password) {
+		super();
+		this.name = name;
+		this.article = article;
+		this.role = role;
+		this.password = password;
 	}
 	
 	

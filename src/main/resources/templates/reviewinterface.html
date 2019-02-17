@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"></meta>
 <title>Insert title here</title>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" th:href="@{/bootstrap.min.css}"></link>
+ <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -12,7 +17,13 @@
 <table class="table table-bordered" >
   <thead>
  <tr class="bg-info">
- <th>ID article</th><th>note du chair</th> <th>Designation</th><th>Statut</th> <th>Titre</th><th>Date du creation</th><th>Payee</th><th>Action</th><th>Action</th>
+ <th>ID article</th>
+  <th>Designation</th> 
+  <th>Titre</th>
+  <th>Date du creation</th>
+  
+  <th>Action</th>
+  <th></th>
  </tr> </thead>
  
  <tr th:each="article :${list}"  >
@@ -20,7 +31,12 @@
 
  </td >
  
- <td th:text="${article.notechair}">note chair</td> <td th:text="${article.resume}">resume</td><td th:text="${article.statut}">statut</td> <td th:text="${article.titre}">titre</td><td th:text="${article.datecreation}">date creation</td> <td th:text="${article.paye}"></td>
+
+  <td th:text="${article.resume}">resume</td>
+  
+  <td th:text="${article.titre}">titre</td>
+  <td th:text="${article.datecreation}">date creation</td> 
+  
  <td>
  <a  class="btn btn-info btn-block" th:href="@{refuse(idArticle=${article.idArticle})}">refuser</a>
  </td>

@@ -40,18 +40,7 @@ public class GestionConferenceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Author a1=atr.save(new Author("fadwa"));
-		Author a2=atr.save(new Author("fadwa"));
-		//Author a2=authorRepository.save(new Author("imane"));
-	
-		
-	//Article ar1=articleRepositoy.save(new Article("titre", "resume", "acceptee", new Date(), 10L, true, a1));
-	System.out.println("hahoi");
-	artt.listarticles();
-	System.out.println("insertiooonnnnnnnnnnnnn");
-	//articleMetierImpl.ajouterArticlesansuser(new Article("ff", "resume", "", new Date(), 5L, false, a2));
-//	artt.ajouterarticle(new Article("titre3", "res55ume3", "acceptee", new Date(), 155L, true, a2));
-	//artt.updateArticle(2L, new Article("titreUP", "reGFF", "", new Date(), 155L, true, a2));
+
 	}
 	
 
