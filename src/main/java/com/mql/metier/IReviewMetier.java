@@ -2,11 +2,10 @@ package com.mql.metier;
 
 import java.util.List;
 
-import com.mql.entities.Article;
+import org.springframework.context.annotation.Configuration;
 
+import com.mql.entities.Reviewer;
+@Configuration
 public interface IReviewMetier {
-	
-	public void add(Long id);
-	
-
+	public List<Reviewer> listRev();
 }

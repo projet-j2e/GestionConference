@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mql.entities.Article;
 import com.mql.entities.Author;
+import com.mql.entities.Reviewer;
 
 //@Transactional
 @Aspect
@@ -17,6 +18,7 @@ import com.mql.entities.Author;
 public interface IArticleMetier  {
 	
 	public Article getArticle(Long ida);
+	public List<Reviewer> listRev();
 	public List<Article> listarticles();
 	public void updateArticle(Long id,Article ar);
 	public void deleteArticle(Long idArticle);

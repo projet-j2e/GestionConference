@@ -20,7 +20,9 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mql.dao.IArticleRepositoy;
+import com.mql.dao.ReviewRepository;
 import com.mql.entities.Article;
+import com.mql.entities.Reviewer;
 
 @Aspect
 @Service
@@ -28,6 +30,8 @@ import com.mql.entities.Article;
 public class ArticleMetierImpl implements IArticleMetier {
 @Autowired
 	private IArticleRepositoy art;
+@Autowired
+private ReviewRepository reviewRepository;
 
 	 EntityManager em;
 	public Article getArticle(Long ida) {
@@ -170,6 +174,13 @@ public class ArticleMetierImpl implements IArticleMetier {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public List<Reviewer> listRev() {
+		List<Reviewer> rev=new ArrayList<>();
+		reviewRepository.findAll().forEach(rev::add);
+		return rev;
 	}
 
 }

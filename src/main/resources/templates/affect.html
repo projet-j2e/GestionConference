@@ -12,5 +12,13 @@
 </head>
 <body>
 
+<table class="table table-stribed">
+		<tr th:each="o:${list.article}">
+		<td th:text="${o.titre}"></td>
+		<td th:text="${o.resume}"></td>
+		
+		</tr>
+		</table>
+
 </body>
 </html>

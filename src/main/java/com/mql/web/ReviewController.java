@@ -27,7 +27,7 @@ import com.mql.metier.IReviewMetier;
 
 @Controller
 public class ReviewController {
-	private Long idR;
+	private Long idR=(long) 0;
 	@Autowired
 	private ReviewRepository reviewRepository;
 	@Autowired
