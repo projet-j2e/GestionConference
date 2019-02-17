@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>inscription</title>
+<link rel="stylesheet" href="../static/css/style.css" media="screen" type="text/css" th:href="@{/css/style.css}"/>
+
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="container h-80">
+<div class="row align-items-center h-100">
+    <div class="col-3 mx-auto">
+        <div class="text-center">
+            <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+        <form th:action="@{AuthorInscription}" method="post" class="form-signin" enctype="multipart/form-data">
+          
+             <input class="form-control form-group" name="username" id="username" th:value="${user.username}" placeholder="username">
+             
+             <input class="form-control form-group" name="email" id="email" th:value="${user.email}" placeholder="email">
+            
+             <input class="form-control form-group" name="tel" id="tel"  th:value="${user.tel}" placeholder="telephone">
+            
+             <input class="form-control form-group" name="password" id="password" th:value="${user.password}" placeholder="password">
+             
+             <input class="form-control form-group" name="Confpassword" id="Confpassword"  th:value="${user.password}" placeholder="Confpassword">
+              
+             <input class="form-control form-group" type="file" id="file" name="UserImage" accept="image/x-png,image/gif,image/jpeg" multiple="multiple">
+                    
+                   <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" onclick="return validateForm();" value="valider">
+         
+        </form>
+          </div>
+    </div>
+</div>
+</div>
+<!-- <script >
+ 
+ function validateForm(){
+	 var username     = document.getElementById('username');
+	 var email        = document.getElementById('email');
+	 var tel		  = document.getElementById('tel');
+	 var password	  = document.getElementById('password');
+	 var Confpassword = document.getElementById('Confpassword');
+	 if(username === '' ) 
+	 {  swal("Oops!", "Entrer tous les champs", "error");
+	   return false ;
+	 }
+	 if(email === ''){
+		 swal("Oops!", "Entrer tous les champs", "error");
+		   return false ;
+	 }
+	 if(tel === '' ) 
+	 { swal("Oops!", "Entrer tous les champs", "error");
+	 return false ;
+	 }
+	 if(password === ''){
+		 swal("Oops!", "Entrer tous les champs", "error");
+		 return false ;
+	 }
+	/*  if(password !== Confpassword ){
+		 swal("Oops!", "Entrer tous les champs", "error");
+		 return false ;
+	 } */
+	
+ }
+
+</script> -->
+</body>
+</html>

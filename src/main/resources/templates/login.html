@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>login</title>
+<!-- <link href="../static/bootstrap.min.css" rel="stylesheet" media="all" th:href="@{/bootstrap.min.css}">
+<link href="../static/Mystyle.css" rel="stylesheet" media="all" th:href="@{/Mystyle.css}">
+<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'> -->
+<link rel="stylesheet" href="../static/css/style.css" media="screen" type="text/css" th:href="@{/css/style.css}"/>
+
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
+
+  <div class="container h-80">
+<div class="row align-items-center h-100">
+    <div class="col-3 mx-auto">
+        <div class="text-center">
+            <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+    <!--  <div th:if="${param.error}" class="text-danger">
+     usrname ou mot de passe est incorecte
+     </div>
+      <div th:if="${param.logout}" class="text-primary">
+    vous avez ete deconnecter
+     </div> -->
+
+   <form th:action="@{checkLogin}" method="post" class="form-signin">
+   <div class="form-group">
+   
+     <input type="text"  name="username"  class="form-control" placeholder="login">
+     </div>
+     <div class="form-group">
+   
+     <input type="password"  name="password" class="form-control" placeholder="password">
+     </div>
+    
+    <input type="submit"  class="btn btn-lg btn-primary btn-block btn-signin" value="login">
+   </form>
+    </div>
+    <div  >
+    <a style="color: #dedede" th:href="@{registre}">Register</a>
+  </div>
+    </div>
+</div>
+</div>
 </body>
+
 </html>
+<!-- end document-->
