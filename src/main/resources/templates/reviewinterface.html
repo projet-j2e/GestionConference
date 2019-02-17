@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="container">
+        
+              
+<table class="table table-bordered" >
+  <thead>
+ <tr class="bg-info">
+ <th>ID article</th><th>note du chair</th> <th>Designation</th><th>Statut</th> <th>Titre</th><th>Date du creation</th><th>Payee</th><th>Action</th><th>Action</th>
+ </tr> </thead>
+ 
+ <tr th:each="article :${list}"  >
+ <td th:text="${article.idArticle}" >&nbsp;&nbsp;
+
+ </td >
+ 
+ <td th:text="${article.notechair}">note chair</td> <td th:text="${article.resume}">resume</td><td th:text="${article.statut}">statut</td> <td th:text="${article.titre}">titre</td><td th:text="${article.datecreation}">date creation</td> <td th:text="${article.paye}"></td>
+ <td>
+ <a  class="btn btn-info btn-block" th:href="@{refuse(idArticle=${article.idArticle})}">refuser</a>
+ </td>
+<td>
+<a  class="btn btn-info btn-block" th:href="@{accept(idArticle=${article.idArticle})}">accepter</a></td>
+ </tr>
+</table>
+</div>
+
+</body>
+</html>

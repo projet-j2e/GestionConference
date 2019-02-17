@@ -1,17 +1,28 @@
 package com.mql.metier;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+
 import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.mql.dao.IArticleRepositoy;
 import com.mql.entities.Article;
 
+@Aspect
 @Service
 @Transactional
 public class ArticleMetierImpl implements IArticleMetier {
@@ -93,6 +104,7 @@ public class ArticleMetierImpl implements IArticleMetier {
 		return null;
 	}
 	*/
+
 	@Override
 	public List<Article> listarticles() {
 		List<Article> arts=new ArrayList<>();
@@ -129,6 +141,35 @@ public class ArticleMetierImpl implements IArticleMetier {
 	public void deleteArticle(Long idArticle) {
 		// TODO Auto-generated method stub
 		art.delete(idArticle);
+	}
+	 
+	//@After("updateArticle()")
+	@Override
+	public void facture(Article article) {
+		System.out.println("----------------------");
+		PDDocument document = new PDDocument();
+		PDPage page = new PDPage();
+		document.addPage(page);
+		 
+		PDPageContentStream contentStream;
+		try {
+			contentStream = new PDPageContentStream(document, page);
+		
+		 
+		contentStream.setFont(PDType1Font.COURIER, 12);
+		contentStream.beginText();
+		contentStream.showText("Hello World");
+		contentStream.endText();
+		contentStream.close();
+		 
+		document.save("pdfBoxHelloWorld.pdf");
+		document.getDocument();
+		document.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
