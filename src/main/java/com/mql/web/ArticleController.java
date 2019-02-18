@@ -24,112 +24,75 @@ import com.mql.entities.Article;
 import com.mql.metier.ArticleMetierImpl;
 import com.mql.metier.IArticleMetier;
 
-
 @Controller
 public class ArticleController {
 	@Autowired
 	private IArticleMetier artm;
 	@Autowired
 	private IArticleRepositoy articleRepositoy;
-	
-	
-	
-	
-	@RequestMapping(value="/Addarticle",method=RequestMethod.GET)
-public String newArticle(ModelMap model) {
-		Article article=new Article();
+
+	@RequestMapping(value = "/Addarticle", method = RequestMethod.GET)
+	public String newArticle(ModelMap model) {
+		Article article = new Article();
 		model.addAttribute("article", article);
 		return "Addarticle";
-		
 	}
-	
-	@RequestMapping(value="/save",method=RequestMethod.POST)
-	
-	public String saveArticle(@Valid Article article,BindingResult result,ModelMap model,RedirectAttributes redirectAttributes) {
-		
-		
-			
-			
-			
-			artm.ajouterarticle(article);
-			
-			
-			return "redirect:/viewArticlelist";
-			
-		}
-	
-	
-	
-	@GetMapping (value="/editArticle")
-	public String editArticle(Long idArticle ,Model model) {
-		
-		Article article=articleRepositoy.getOne(idArticle);
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveArticle(@Valid Article article, BindingResult result, ModelMap model,
+			RedirectAttributes redirectAttributes) {
+		artm.ajouterarticle(article);
+		return "redirect:/viewArticlelist";
+	}
+
+	@GetMapping(value = "/editArticle")
+	public String editArticle(Long idArticle, Model model) {
+
+		Article article = articleRepositoy.getOne(idArticle);
 		model.addAttribute("article", article);
-		System.out.println("vv");	
+		System.out.println("vv");
 		return "editArticle";
-		
 	}
-	
-	
 
-	@RequestMapping (value="/updatearticle",method=RequestMethod.POST)
-	public String editsave(@Valid Article et,BindingResult result) {
-		
-	
+	@RequestMapping(value = "/updatearticle", method = RequestMethod.POST)
+	public String editsave(@Valid Article et, BindingResult result) {
 		articleRepositoy.save(et);
-	   return "redirect:viewArticlelist";
+		return "redirect:viewArticlelist";
 	}
 
-	
-	
-
-	@RequestMapping (value="/deletearticle",method=RequestMethod.GET)
-	public String supprimer (Long idArticle) {
+	@RequestMapping(value = "/deletearticle", method = RequestMethod.GET)
+	public String supprimer(Long idArticle) {
 		artm.deleteArticle(idArticle);
 		System.out.println("tmshaaat");
 		return "redirect:/viewArticlelist";
 	}
-	
 
-	
-	
-	
 	@RequestMapping("/viewArticlelist")
 	public ModelAndView getAll() {
-		List<Article> list=artm.listarticles();
-		return new ModelAndView("viewArticlelist","list",list);
-		
+		List<Article> list = artm.listarticles();
+		return new ModelAndView("viewArticlelist", "list", list);
 	}
 
 	@RequestMapping("/chercherArticle")
-	public String consulter(Model model,Long idArticle ) {
-		
+	public String consulter(Model model, Long idArticle) {
 		try {
-		Article ar=artm.getArticle(idArticle);
-		model.addAttribute("article", ar);
-		}catch(Exception e) {
+			Article ar = artm.getArticle(idArticle);
+			model.addAttribute("article", ar);
+		} catch (Exception e) {
 			model.addAttribute("exception", e);
 		}
-		
-		//List<Article> list=artm.listarticles();
 		return "chercherArticle";
-		
 	}
-	
-/*
-	@RequestMapping("/chercherArticlecode")
-	public String consulter2(Model model,@RequestParam(name="motCle") ) {
-		
-		try {
-		Article ar=artm.getArticle(idArticle);
-		model.addAttribute("article", ar);
-		}catch(Exception e) {
-			model.addAttribute("exception", e);
-		}
-		
-		//List<Article> list=artm.listarticles();
-		return "chercherArticle";
-		
-	}*/
+	/*
+	 * @RequestMapping("/chercherArticlecode") public String consulter2(Model
+	 * model,@RequestParam(name="motCle") ) {
+	 * 
+	 * try { Article ar=artm.getArticle(idArticle); model.addAttribute("article",
+	 * ar); }catch(Exception e) { model.addAttribute("exception", e); }
+	 * 
+	 * //List<Article> list=artm.listarticles(); return "chercherArticle";
+	 * 
+	 * }
+	 */
 
 }

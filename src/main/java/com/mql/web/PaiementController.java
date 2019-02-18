@@ -42,20 +42,19 @@ public class PaiementController {
         attributes.addAttribute("cmd", "_cart");
         attributes.addAttribute("business", "hamza16haddad@gmail.com");
         attributes.addAttribute("item_name_1", "participation au conference");
-        attributes.addAttribute("amount_1", "1");
+        attributes.addAttribute("amount_1", "100");
         attributes.addAttribute("item_name_2", "l’hébergement à l’hôtel");
-        attributes.addAttribute("amount_2", "5");
+        attributes.addAttribute("amount_2", "500");
         attributes.addAttribute("item_name_3", "une visite touristique");
-        attributes.addAttribute("amount_3", "3");
+        attributes.addAttribute("amount_3", "300");
         attributes.addAttribute("item_name_4", "une soirée Gala");
-        attributes.addAttribute("amount_4", "2");
+        attributes.addAttribute("amount_4", "200");
         attributes.addAttribute("rm", "2");
         c=idArticle;
         return new RedirectView("https://www.sandbox.paypal.com/cgi-bin/webscr");
 	}
 	
 	@RequestMapping("/payers")
-//	@Pointcut("execution(public * *(..))")
 	public String pay() {
 		Article article=articleRepositoy.getOne(c);
 		article.setPaye(true);

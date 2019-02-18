@@ -68,35 +68,20 @@ public class ReviewController {
 
 	@RequestMapping("accept")
 	public RedirectView addReview(@RequestParam("idArticle") Long idArticle) {
-		//Reviewer reviewer = reviewRepository.findOne((long) 1);
 		Article article=artm.getArticle((long) idArticle);
-		
-		//Collection<Article> articles=reviewer.getArticle();
-		//articles.add(article);
-		//reviewer.setArticle(articles);
-		//reviewRepository.save(reviewer);
 		Reviewer_Article a = v.GetArticle(idArticle, this.idR);
-		//--------------------------
 		if(a.getReview() == 1) {
 			article.setStatut("accepter");
 			iArticleRepositoy.save(article);
 		}
-		//------------------------
 		a.setReview(a.getReview()+1);
 		a.setVote(true);
-		v.save(a);
-		
+		v.save(a);	
 		return new RedirectView("/getreview");
 	}
-	
 	@RequestMapping("refuse")
 	public RedirectView addReview2(@RequestParam("idArticle") Long idArticle,RedirectAttributes attributes) {
-		//Reviewer reviewer = reviewRepository.findOne((long) 1);
 	    Article article=artm.getArticle((long) idArticle);
-		//Collection<Article> articles=reviewer.getArticle();
-		//articles.add(article);
-		//reviewer.setArticle(articles);
-		//reviewRepository.save(reviewer);
 		Reviewer_Article a = v.GetArticle(idArticle, this.idR);
 		if(a.getReview() == -1) {
 			article.setStatut("refuser");
@@ -105,7 +90,6 @@ public class ReviewController {
 		a.setReview(a.getReview()-1);
 		a.setVote(true);
 		v.save(a);
-		
 		return new RedirectView("/getreview");
 	}
 }
